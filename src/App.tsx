@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import HeadText from './components/HeadText';
 import { yearsDatesGenerator } from './components/helpers/appHelpers';
 import Circle from './components/circle/Circle';
-import 'swiper/css';
+import 'swiper/swiper-bundle.css';
 import './App.css'
 
 const defaultH2Style = `
