@@ -1,13 +1,28 @@
-export function coordinatesGeneration(nums: number, transmit: number = 1): {x: number, y: number}[] {
-    const baseAngle = Math.PI*2 / nums;
-    const coords = [];
-    for (let i = 0; i < nums; i++) {
-        const angle = baseAngle * (i - transmit);
-        const y = Math.sin(angle) * 50 + 50;
-        const x = Math.cos(angle) * 50 + 50;
-        coords.push({x, y});
-    }
-    return coords;
+export function positionGeneraton(nums: number, transmit: number = 1): string {
+  const baseAngle = (Math.PI * 2) / nums;
+  let extString = "";
+  for (let i = 0; i < nums; i++) {
+    const angle = baseAngle * (i - transmit);
+    const y = Math.sin(angle) * 50 + 50;
+    const x = Math.cos(angle) * 50 + 50;
+    extString += `.point:nth-child(${i + 1}) { top: ${y}%; left: ${x}%; transform: translate(-50%, -50%); }\n`;
+  }
+  return extString;
+}
+
+export function coordinatesGeneration(
+  nums: number,
+  transmit: number = 1,
+): { x: number; y: number }[] {
+  const baseAngle = (Math.PI * 2) / nums;
+  const coords = [];
+  for (let i = 0; i < nums; i++) {
+    const angle = baseAngle * (i - transmit);
+    const y = Math.sin(angle) * 50 + 50;
+    const x = Math.cos(angle) * 50 + 50;
+    coords.push({ x, y });
+  }
+  return coords;
 }
 
 /*
