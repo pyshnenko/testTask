@@ -10,18 +10,17 @@ interface CircleProps {
 }
 
 function Circle(props: CircleProps): React.JSX.Element {
-
-  const {page, totalPages} = useContext(PageContext);
+  const { page, totalPages } = useContext(PageContext);
 
   const { theme } = props;
 
   const CircleRef = useRef<HTMLDivElement>(null);
 
-  useEffect(()=>{
+  useEffect(() => {
     return () => {
       gsap.killTweensOf(CircleRef.current);
     };
-  }, [])
+  }, []);
 
   useEffect(() => {
     //При изменении активного шага поворачиваем круг и точки
@@ -36,9 +35,7 @@ function Circle(props: CircleProps): React.JSX.Element {
   return (
     <>
       <PointComponent ref={CircleRef}>
-        <div className="circle-container">
-          {ChildGenerator({ theme })}
-        </div>
+        <div className="circle-container">{ChildGenerator({ theme })}</div>
       </PointComponent>
     </>
   );

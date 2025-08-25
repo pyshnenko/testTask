@@ -8,11 +8,12 @@ import { totalPages } from "./consts";
 import { PageContext } from "./store/context";
 import { BodyStyle, WorkerWindow } from "./helpers/styled";
 import NumPageBox from "./components/NumPageBox/NumPageBox";
+import ThemeTextBox from "./components/small/ThemeTextBox";
+import stepYears from "./lib/stepYears";
 import "swiper/swiper-bundle.css";
 import "./helpers/App.css";
 
-export default () => {
-
+export default function App() {
   const swipebleBlockRef = useRef<HTMLDivElement>(null);
 
   const [page, setPage] = useState(1);
@@ -36,21 +37,21 @@ export default () => {
    * запускаем до монтирования
    */
 
-  useLayoutEffect(()=>{
+  useLayoutEffect(() => {
     const handleResize = (event: UIEvent) => {
       setPageWidth((event.target as Window).innerWidth);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
-  }, [])
+  }, []);
 
-  useEffect(()=>{    
-    console.log(pageWidth)
-  }, [pageWidth])
+  useEffect(() => {
+    console.log(pageWidth);
+  }, [pageWidth]);
 
   /**
    * Первичный эффект, выполняющийся при монтировании компонента:
@@ -81,23 +82,27 @@ export default () => {
    */
 
   useEffect(() => {
-    gsap.to(swipebleBlockRef.current, { 
-      opacity: 0, 
+    gsap.to(swipebleBlockRef.current, {
+      opacity: 0,
       duration: 0.1,
       onComplete: () => {
         setValidYearsArray(yearsDatesGenMemoised);
-        gsap.to(swipebleBlockRef.current, { opacity: 1, duration: 0.2, delay: 1 });
-      }
+        gsap.to(swipebleBlockRef.current, {
+          opacity: 1,
+          duration: 0.2,
+          delay: 1,
+        });
+      },
     });
   }, [page]);
 
-
   return (
     <BodyStyle>
-      <PageContext.Provider value={{page, setPage, totalPages, pageWidth}}>
+      <PageContext.Provider value={{ page, setPage, totalPages, pageWidth }}>
         <WorkerWindow>
           <HeadText />
           <YearsBox />
+          <ThemeTextBox theme={stepYears.get(page + 1)?.theme || ""} />
           <NumPageBox />
           <div ref={swipebleBlockRef} className="swiper-container">
             <TimelineEvents events={validYearsArray} />

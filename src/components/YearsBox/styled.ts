@@ -36,29 +36,29 @@ export const YearsBoxStyled = styled.div`
   width: 100%;
   position: relative;
   align-items: center;
-  @media (min-width: ${baseMediaWidth+1}px) {
+  @media (min-width: ${baseMediaWidth + 1}px) {
     &::before {
-        /* Горизонтальная линия */
-        content: "";
-        position: absolute;
-        top: 50%; /* Вертикальное центрирование */
-        left: 0;
-        right: 0;
-        height: 1px; /* Толщина линии */
-        background-color: rgba(0, 0, 0, 0.1); /* Цвет линии */
+      /* Горизонтальная линия */
+      content: "";
+      position: absolute;
+      top: 50%; /* Вертикальное центрирование */
+      left: 0;
+      right: 0;
+      height: 1px; /* Толщина линии */
+      background-color: rgba(0, 0, 0, 0.1); /* Цвет линии */
     }
   }
   @media (max-width: ${baseMediaWidth}px) {
     &::before {
-        /* Горизонтальная линия */
-        content: "";
-        position: absolute;
-        top: 100%; /* Вертикальное центрирование */
-        width: 100%;
-        left: 0;
-        right: 0;
-        height: 1px; /* Толщина линии */
-        background-color: rgba(0, 0, 0, 0.1); /* Цвет линии */
+      /* Горизонтальная линия */
+      content: "";
+      position: absolute;
+      top: 100%; /* Вертикальное центрирование */
+      width: 100%;
+      left: 0;
+      right: 0;
+      height: 1px; /* Толщина линии */
+      background-color: rgba(0, 0, 0, 0.1); /* Цвет линии */
     }
   }
 `;

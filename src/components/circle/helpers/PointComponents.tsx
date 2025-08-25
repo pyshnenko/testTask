@@ -20,18 +20,17 @@ interface CircleProps {
 }
 
 export const ChildGenerator = (props: CircleProps): React.JSX.Element => {
-
-  const {page, setPage, totalPages} = useContext(PageContext);
+  const { page, setPage, totalPages } = useContext(PageContext);
 
   const { theme } = props;
 
   const StyledPRef = useRef<HTMLParagraphElement>(null);
 
-  useEffect(()=>{    
+  useEffect(() => {
     return () => {
       gsap.killTweensOf(StyledPRef.current);
     };
-  }, [])
+  }, []);
 
   useEffect(() => {
     gsap.fromTo(

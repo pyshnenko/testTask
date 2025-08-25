@@ -9,7 +9,7 @@ const HeadTextDiv = styled.div`
   justify-content: flex-start;
   padding-top: 7.5vh;
 
-  @media (min-width: ${baseMediaWidth+1}px) {
+  @media (min-width: ${baseMediaWidth + 1}px) {
     .gradientLine {
       background: linear-gradient(0deg, #ef5da8 0%, #3877ee 100%);
       height: 120px;
@@ -30,6 +30,15 @@ const HeadTextDiv = styled.div`
   }
 `;
 
+/**
+ * Компонент верхнего текстового блока
+ *
+ * @component
+ * @returns {React.JSX.Element} JSX-элемент с заголовком и декоративной линией
+ * @remarks
+ * Отображает два заголовка "Исторические" и "даты" с декоративной градиентной линией.
+ * Использует стилизованный контейнер `HeadTextDiv` для верстки.
+ */
 export default function HeadText(): React.JSX.Element {
   return (
     <HeadTextDiv>

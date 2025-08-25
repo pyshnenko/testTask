@@ -44,12 +44,12 @@ const StyledArticle = styled.article`
 /**
  * Компонент для отображения события в свайпере.
  * Принимает данные о годе и описании события и рендерит их в стилизованном блоке.
- * 
+ *
  * @param props - Объект с параметрами компонента.
  * @param props.year - Год события (обязательный).
  * @param props.description - Описание события (обязательное).
  * @returns JSX-элемент, представляющий событие в свайпере.
- * 
+ *
  * @example
  * <TimelineEvent year={2023} description="Выход нового продукта" />
  */
@@ -60,9 +60,7 @@ export function TimelineEvent({
 }: TimelineEventProps): JSX.Element {
   return (
     <StyledArticle>
-      <h3>
-        {year}
-      </h3>
+      <h3>{year}</h3>
       <p>{description}</p>
     </StyledArticle>
   );
