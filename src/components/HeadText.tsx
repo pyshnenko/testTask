@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React from "react";
+import { baseMediaWidth } from "../consts";
 
 const HeadTextDiv = styled.div`
   display: flex;
@@ -8,11 +9,13 @@ const HeadTextDiv = styled.div`
   justify-content: flex-start;
   padding-top: 7.5vh;
 
-  .gradientLine {
-    background: linear-gradient(0deg, #ef5da8 0%, #3877ee 100%);
-    height: 120px;
-    width: 5px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  @media (min-width: ${baseMediaWidth+1}px) {
+    .gradientLine {
+      background: linear-gradient(0deg, #ef5da8 0%, #3877ee 100%);
+      height: 120px;
+      width: 5px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
   }
 
   h3 {
@@ -20,6 +23,10 @@ const HeadTextDiv = styled.div`
     color: #42567a;
     padding: 0;
     margin: 0 0 0 80px;
+    @media (max-width: ${baseMediaWidth}px) {
+      font-size: 20px;
+      margin: 0;
+    }
   }
 `;
 

@@ -1,5 +1,6 @@
 import type { JSX } from "react";
 import styled from "styled-components";
+import { baseMediaWidth } from "../consts";
 
 interface TimelineEventProps {
   year: number;
@@ -28,20 +29,39 @@ const StyledArticle = styled.article`
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
-    line-height: 30px; /* 150% */
+    line-height: 30px;
+  }
+
+  @media (max-width: ${baseMediaWidth}px) {
+    p {
+      margin: 15px 0;
+    }
   }
 `;
+
+/**
+ * Компонент для отображения события в свайпере.
+ * Принимает данные о годе и описании события и рендерит их в стилизованном блоке.
+ * 
+ * @param props - Объект с параметрами компонента.
+ * @param props.year - Год события (обязательный).
+ * @param props.description - Описание события (обязательное).
+ * @returns JSX-элемент, представляющий событие в свайпере.
+ * 
+ * @example
+ * <TimelineEvent year={2023} description="Выход нового продукта" />
+ */
 
 export function TimelineEvent({
   year,
   description,
 }: TimelineEventProps): JSX.Element {
   return (
-    <StyledArticle className="flex flex-col">
-      <h3 className="self-start text-2xl leading-tight text-blue-500 uppercase">
+    <StyledArticle>
+      <h3>
         {year}
       </h3>
-      <p className="mt-4 text-xl leading-8 text-slate-600">{description}</p>
+      <p>{description}</p>
     </StyledArticle>
   );
 }

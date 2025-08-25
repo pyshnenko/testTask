@@ -1,6 +1,7 @@
 import { gsap } from "gsap/gsap-core";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useContext } from "react";
 import { StyledP } from "./pointStyled";
+import { PageContext } from "../../../store/context";
 
 /**
  * Компонент для отображения круга с точками
@@ -15,16 +16,22 @@ import { StyledP } from "./pointStyled";
  */
 
 interface CircleProps {
-  step: number;
-  stepsCount: number;
-  setStep: (step: number) => void;
   theme: string;
 }
 
 export const ChildGenerator = (props: CircleProps): React.JSX.Element => {
-  const { stepsCount: count, setStep, step, theme } = props;
+
+  const {page, setPage, totalPages} = useContext(PageContext);
+
+  const { theme } = props;
 
   const StyledPRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(()=>{    
+    return () => {
+      gsap.killTweensOf(StyledPRef.current);
+    };
+  }, [])
 
   useEffect(() => {
     gsap.fromTo(
@@ -32,18 +39,18 @@ export const ChildGenerator = (props: CircleProps): React.JSX.Element => {
       { opacity: 0 },
       { opacity: 1, duration: 0.4, delay: 2 },
     );
-  }, [step]);
+  }, [page]);
 
   const children: React.JSX.Element[] = [];
-  for (let i = 1; i <= count; i++) {
+  for (let i = 1; i <= totalPages; i++) {
     children.push(
       <div
-        onClick={() => setStep(i)}
+        onClick={() => setPage(i)}
         key={i}
-        className={step === i ? "activePoint" : "point"}
+        className={page === i ? "activePoint" : "point"}
         data-number={i.toString()}
       >
-        {step === i && <StyledP ref={StyledPRef}>{theme}</StyledP>}
+        {page === i && <StyledP ref={StyledPRef}>{theme}</StyledP>}
       </div>,
     );
   }

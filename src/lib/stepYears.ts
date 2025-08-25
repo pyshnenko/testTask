@@ -2,12 +2,12 @@ export default new Map<
   number,
   { first: number; second: number; theme: string }
 >([
-  [1, { first: 1940, second: 1955, theme: "Компьютеры" }],
-  [2, { first: 1956, second: 1970, theme: "Микропроцессоры" }],
-  [3, { first: 1971, second: 1985, theme: "Эра ПК" }],
-  [4, { first: 1986, second: 2000, theme: "Обо мне" }],
-  [5, { first: 2001, second: 2015, theme: "ПК" }],
-  [6, { first: 2016, second: 2020, theme: "Веб-разработка" }],
+  [1, { first: 1980, second: 1986, theme: "Технологии" }],
+  [2, { first: 1987, second: 1991, theme: "Кино" }],
+  [3, { first: 1992, second: 1997, theme: "Литература" }],
+  [4, { first: 1986, second: 2000, theme: "Театр" }],
+  [5, { first: 2006, second: 2014, theme: "Спорт" }],
+  [6, { first: 2015, second: 2022, theme: "Наука" }],
 ]); //временные диапазоны для слайдера
 
 /** 

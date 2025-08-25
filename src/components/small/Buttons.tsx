@@ -2,14 +2,15 @@ import styled from "styled-components";
 
 interface ButtonProps {
   enabled?: boolean;
+  visible?: boolean;
 }
 
 const Circle = () => (
   <circle
-    cx="25"
-    cy="25"
-    r="24.5"
-    transform="matrix(-1 0 0 1 50 0)"
+    cx='25'
+    cy='25'
+    r='24.5'
+    transform={`matrix(-1 0 0 1 50 0)`}
     stroke="#42567A"
     stroke-opacity="0.5"
   />
@@ -36,7 +37,7 @@ export function LeftButton(props: ButtonProps) {
       xmlns="http://www.w3.org/2000/svg"
       width="50"
       height="50"
-      viewBox="0 0 50 50"
+      viewBox={`0 0 50 50`}
       fill="none"
     >
       <g opacity={enabled ? "1" : "0.5"}>
@@ -54,7 +55,7 @@ export function RightButton(props: ButtonProps) {
       xmlns="http://www.w3.org/2000/svg"
       width="50"
       height="50"
-      viewBox="0 0 50 50"
+      viewBox={`0 0 50 50`}
       fill="none"
     >
       <g opacity={enabled ? "1" : "0.5"}>
@@ -73,10 +74,22 @@ const StyledWhiteCircle = styled.div`
   box-shadow: 0 0 15px rgba(56, 119, 238, 0.1);
 `;
 
+/**
+ * Компоненты кнопки "Влево" и "Вправо" для навигации по слайдеру (Swiper).
+ * Отображает SVG-иконку стрелки влево внутри белого круга.
+ * 
+ * @param props - Пропсы компонента.
+ * @param props.enabled - Флаг, определяющий видимость кнопки (true — видима, false — скрыта). По умолчанию true.
+ * @returns JSX-элемент с SVG-иконкой и стилизованным контейнером.
+ * 
+ * @example
+ * <SwiperLeftButton enabled={true} />
+ */
+
 export function SwiperLeftButton(props: ButtonProps) {
-  const { enabled = true } = props;
+  const { enabled = true, visible=true } = props;
   return (
-    <StyledWhiteCircle>
+    <>{visible&&<StyledWhiteCircle>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="50"
@@ -86,14 +99,14 @@ export function SwiperLeftButton(props: ButtonProps) {
       >
         <g opacity={enabled ? "1" : "0"}>{LeftArrow({ color: "#3877EE" })}</g>
       </svg>
-    </StyledWhiteCircle>
+    </StyledWhiteCircle>}</>
   );
 }
 
 export function SwiperRightButton(props: ButtonProps) {
-  const { enabled = true } = props;
+  const { enabled = true, visible=true } = props;
   return (
-    <StyledWhiteCircle>
+    <>{visible&&<StyledWhiteCircle>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="50"
@@ -103,6 +116,6 @@ export function SwiperRightButton(props: ButtonProps) {
       >
         <g opacity={enabled ? "1" : "0"}>{RightArrow({ color: "#3877EE" })}</g>
       </svg>
-    </StyledWhiteCircle>
+    </StyledWhiteCircle>}</>
   );
 }

@@ -21,18 +21,18 @@ export function rotateOnStep(
       ...CircleRef.current.querySelectorAll(".point"),
       ...CircleRef.current.querySelectorAll(".activePoint"),
     ];
+    gsap.to(CircleRef.current, {
+      duration: 1,
+      delay: 0.2,
+      rotate: -(360 / stepsCount) * (step - 1),
+      ease: "power2.out",
+    });
     points.forEach((point) => {
       gsap.to(point, {
-        duration: 0.6,
+        duration: 0.37,
         rotate: (360 / stepsCount) * (step - 1),
         ease: "power2.out",
       });
-    });
-    gsap.to(CircleRef.current, {
-      duration: 1,
-      delay: 0.48,
-      rotate: -(360 / stepsCount) * (step - 1),
-      ease: "power2.out",
     });
   }
 }
