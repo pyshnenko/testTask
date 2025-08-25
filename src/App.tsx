@@ -81,9 +81,14 @@ export default () => {
    */
 
   useEffect(() => {
-    gsap.to(swipebleBlockRef.current, { opacity: 0, duration: 0.1 });
-    setValidYearsArray(yearsDatesGenMemoised);
-    gsap.to(swipebleBlockRef.current, { opacity: 1, duration: 0.2, delay: 1 });
+    gsap.to(swipebleBlockRef.current, { 
+      opacity: 0, 
+      duration: 0.1,
+      onComplete: () => {
+        setValidYearsArray(yearsDatesGenMemoised);
+        gsap.to(swipebleBlockRef.current, { opacity: 1, duration: 0.2, delay: 1 });
+      }
+    });
   }, [page]);
 
 
