@@ -30,6 +30,14 @@ function Circle(props: CircleProps): React.JSX.Element {
   useEffect(() => {
     //Формирование точек по кругу при монтировании. можно просто расположить по координатам
     startPosition(CircleRef, page, totalPages);
+    if (CircleRef.current) gsap.fromTo(CircleRef.current.querySelectorAll(".circle-container"), {
+      width: 0,
+      height: 0
+    },{
+      width: '30vw',
+      height: '30vw',
+
+    })
   }, []);
 
   return (
