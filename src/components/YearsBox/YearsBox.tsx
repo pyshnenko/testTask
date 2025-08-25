@@ -75,6 +75,12 @@ export default function YearsBox(): React.JSX.Element {
             second: parseInt(sYearRef.current?.innerText || "", 10),
           });
         },
+        onComplete: () => {
+          setDates({
+            ...dates,
+            theme: stepYears.get(page)?.theme || "",
+          });
+        }
       });
     }
   }, [page]);

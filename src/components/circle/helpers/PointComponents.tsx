@@ -36,7 +36,7 @@ export const ChildGenerator = (props: CircleProps): React.JSX.Element => {
     gsap.fromTo(
       StyledPRef.current,
       { opacity: 0 },
-      { opacity: 1, duration: 0.4, delay: 2 },
+      { opacity: 1, duration: 0.4, delay: 1.5 },
     );
   }, [page]);
 

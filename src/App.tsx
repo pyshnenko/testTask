@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import HeadText from "./components/HeadText";
 import { yearsDatesGenerator } from "./helpers/appHelpers";
 import YearsBox from "./components/YearsBox/YearsBox";
-import { totalPages } from "./consts";
+import { baseMediaWidth, totalPages } from "./consts";
 import { PageContext } from "./store/context";
 import { BodyStyle, WorkerWindow } from "./helpers/styled";
 import NumPageBox from "./components/NumPageBox/NumPageBox";
@@ -102,7 +102,7 @@ export default function App() {
         <WorkerWindow>
           <HeadText />
           <YearsBox />
-          <ThemeTextBox theme={stepYears.get(page + 1)?.theme || ""} />
+          {(pageWidth < baseMediaWidth) && <ThemeTextBox theme={stepYears.get(page + 1)?.theme || ""} />}
           <NumPageBox />
           <div ref={swipebleBlockRef} className="swiper-container">
             <TimelineEvents events={validYearsArray} />
