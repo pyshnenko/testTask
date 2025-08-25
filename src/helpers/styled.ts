@@ -35,7 +35,7 @@ export const BodyStyle = styled.div`
   padding: 0 5vw 0 17vw;
   @media (max-width: ${baseMediaWidth}px) {
     & {
-      padding: 20px;
+      padding: 0 20px;
     }
   }
 `;

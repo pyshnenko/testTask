@@ -31,7 +31,7 @@ export const StyledNextDate = styled.h2`
 
 export const YearsBoxStyled = styled.div`
   display: inline-flex;
-  height: 33vh;
+  height: 27vh;
   justify-content: center;
   width: 100%;
   position: relative;

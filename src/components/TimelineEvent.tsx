@@ -35,6 +35,8 @@ const StyledArticle = styled.article`
   @media (max-width: ${baseMediaWidth}px) {
     p {
       margin: 15px 0;
+      font-size: 16px;
+      line-height: 25px;
     }
   }
 `;
