@@ -10,9 +10,16 @@ import { totalPages } from "../consts";
  * @prop {number} pageWidth - ширина страницы
  */
 
-export const PageContext = createContext({
+interface PageContextType {
+  page: number;
+  setPage: (page: number) => void;
+  totalPages: number;
+  pageWidth: number;
+}
+
+export const PageContext = createContext<PageContextType>({
   page: 1,
-  setPage: (_page: number) => {},
+  setPage: () => {},
   totalPages: totalPages,
   pageWidth: 0,
 });

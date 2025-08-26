@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { StepDiv } from "../../helpers/styled";
 import ButtonBox from "../ButtonBox/ButtonBox";
-import { PageContext } from "../../store/context";
+import { PageContext } from "../../context/context";
 import { formatNumber } from "../../helpers/appHelpers";
 import styled from "styled-components";
 import { baseMediaWidth } from "../../consts";

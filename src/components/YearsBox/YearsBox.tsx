@@ -1,9 +1,9 @@
-import React, { useRef, useContext, useState } from "react";
+import React, { useRef, useContext, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react"; // Импортируем useGSAP
 import stepYears from "../../lib/stepYears";
 import Circle from "../circle/Circle";
 import { gsap } from "gsap/gsap-core";
-import { PageContext } from "../../store/context";
+import { PageContext } from "../../context/context";
 import { YearsBoxStyled, StyledLastDate, StyledNextDate } from "./styled";
 import { baseMediaWidth } from "../../consts";
 /**
@@ -85,6 +85,8 @@ export default function YearsBox(): React.JSX.Element {
       });
     }
   }, [page]);
+
+  useEffect(() => {console.log(pageWidth)}, [pageWidth]);
 
   return (
     <YearsBoxStyled>

@@ -5,7 +5,7 @@ import HeadText from "./components/HeadText";
 import { yearsDatesGenerator } from "./helpers/appHelpers";
 import YearsBox from "./components/YearsBox/YearsBox";
 import { baseMediaWidth, totalPages } from "./consts";
-import { PageContext } from "./store/context";
+import { PageContext } from "./context/context";
 import { BodyStyle, WorkerWindow } from "./helpers/styled";
 import NumPageBox from "./components/NumPageBox/NumPageBox";
 import ThemeTextBox from "./components/small/ThemeTextBox";
@@ -16,6 +16,7 @@ import "./helpers/App.css";
 export default function App() {
   const swipebleBlockRef = useRef<HTMLDivElement>(null); // ref для блока свайпера
   const bodyRef = useRef<HTMLDivElement>(null); // ref для body
+  const firstStart = useRef(true);
 
   const [page, setPage] = useState(1);
   const [pageWidth, setPageWidth] = useState(window?.innerWidth || 0);
@@ -58,24 +59,29 @@ export default function App() {
    */
 
   useEffect(() => {
-    if (swipebleBlockRef.current) {
-      gsap.fromTo(
-        swipebleBlockRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.2 },
-      );
+    if (firstStart.current) {
+      firstStart.current = false;
+      const swipebleBlock = swipebleBlockRef.current;
+      if (swipebleBlock) {
+        gsap.fromTo(
+          swipebleBlock,
+          { opacity: 0 },
+          { opacity: 1, duration: 0.2 },
+        );
+      }
+      if (bodyRef.current) {
+        gsap.fromTo(
+          bodyRef.current,
+          { opacity: 0 },
+          { opacity: 1, duration: 0.5, delay: 0.5 })
+      }
+      setValidYearsArray(yearsDatesGenMemoised);
+      return () => {
+        gsap.killTweensOf(swipebleBlock);
+      };
+    
     }
-    if (bodyRef.current) {
-      gsap.fromTo(
-        bodyRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.5, delay: 0.5 })
-    }
-    setValidYearsArray(yearsDatesGenMemoised);
-    return () => {
-      gsap.killTweensOf(swipebleBlockRef.current);
-    };
-  }, []);
+  }, [yearsDatesGenMemoised]);
 
   /**
    * Эффект, срабатывающий при изменении страницы (`page`):
@@ -97,7 +103,7 @@ export default function App() {
         });
       },
     });
-  }, [page]);
+  }, [page, yearsDatesGenMemoised]);
 
   return (
     <BodyStyle ref={bodyRef}>

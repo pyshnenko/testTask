@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { LeftButton, RightButton } from "../small/Buttons";
-import { PageContext } from "../../store/context";
+import { PageContext } from "../../context/context";
 import { ButtonGroupDiv, ButtonDiv } from "./styled";
 
 export default function ButtonBox(): React.JSX.Element {

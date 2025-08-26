@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { PageContext } from "../../store/context";
+import { PageContext } from "../../context/context";
 import styled from "styled-components";
 
 /**
@@ -40,6 +40,7 @@ const ArrayGenerator = ({
   for (let i = 0; i < totalPages; i++) {
     expArray.push(
       <BubbleDiv
+        key={`BubbleDiv ${i}`}
         onClick={() => setPage(i + 1)}
         style={{ opacity: page - 1 === i ? 1 : 0.4 }}
       />,

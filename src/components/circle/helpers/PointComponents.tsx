@@ -1,7 +1,7 @@
 import { gsap } from "gsap/gsap-core";
 import React, { useRef, useEffect, useContext } from "react";
 import { StyledP } from "./pointStyled";
-import { PageContext } from "../../../store/context";
+import { PageContext } from "../../../context/context";
 
 /**
  * Компонент для отображения круга с точками
@@ -27,8 +27,9 @@ export const ChildGenerator = (props: CircleProps): React.JSX.Element => {
   const StyledPRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
+    const StyledP = StyledPRef.current
     return () => {
-      gsap.killTweensOf(StyledPRef.current);
+      gsap.killTweensOf(StyledP);
     };
   }, []);
 

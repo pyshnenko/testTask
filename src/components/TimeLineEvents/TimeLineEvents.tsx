@@ -3,7 +3,7 @@ import { TimelineEvent } from "../TimelineEvent";
 import { Swiper, SwiperSlide, type SwiperRef } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { SwiperLeftButton, SwiperRightButton } from "../small/Buttons";
-import { PageContext } from "../../store/context";
+import { PageContext } from "../../context/context";
 import { baseMediaWidth } from "../../consts";
 import { SwiperFullBox, ButtonDiv, SwiperSection } from "./helpers/styled";
 import { slidersOnDisplay } from "./helpers/helper";
