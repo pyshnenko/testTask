@@ -10,7 +10,7 @@ interface TimelineEventProps {
 const StyledArticle = styled.article`
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  margin-bottom: 20px;  
 
   h3 {
     color: #3877ee;

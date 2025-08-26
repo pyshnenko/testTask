@@ -12,7 +12,7 @@ import { totalPages } from "../consts";
 
 export const PageContext = createContext({
   page: 1,
-  setPage: (page: number) => {page},
+  setPage: (_page: number) => {},
   totalPages: totalPages,
   pageWidth: 0,
 });

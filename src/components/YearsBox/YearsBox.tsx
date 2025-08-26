@@ -77,7 +77,8 @@ export default function YearsBox(): React.JSX.Element {
         },
         onComplete: () => {
           setDates({
-            ...dates,
+            first: stepYears.get(page)?.first || 0,
+            second: stepYears.get(page)?.second || 0,
             theme: stepYears.get(page)?.theme || "",
           });
         }

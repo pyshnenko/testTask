@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useLayoutEffect, useMemo } from "react";
-import TimelineEvents from "./components/TimeLineEvents";
+import TimelineEvents from "./components/TimeLineEvents/TimeLineEvents";
 import { gsap } from "gsap";
 import HeadText from "./components/HeadText";
 import { yearsDatesGenerator } from "./helpers/appHelpers";
@@ -14,7 +14,8 @@ import "swiper/swiper-bundle.css";
 import "./helpers/App.css";
 
 export default function App() {
-  const swipebleBlockRef = useRef<HTMLDivElement>(null);
+  const swipebleBlockRef = useRef<HTMLDivElement>(null); // ref для блока свайпера
+  const bodyRef = useRef<HTMLDivElement>(null); // ref для body
 
   const [page, setPage] = useState(1);
   const [pageWidth, setPageWidth] = useState(window?.innerWidth || 0);
@@ -49,10 +50,6 @@ export default function App() {
     };
   }, []);
 
-  useEffect(() => {
-    console.log(pageWidth);
-  }, [pageWidth]);
-
   /**
    * Первичный эффект, выполняющийся при монтировании компонента:
    * 1. Анимирует появление элемента с информацие  (увеличение прозрачности).
@@ -67,6 +64,12 @@ export default function App() {
         { opacity: 0 },
         { opacity: 1, duration: 0.2 },
       );
+    }
+    if (bodyRef.current) {
+      gsap.fromTo(
+        bodyRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.5, delay: 0.5 })
     }
     setValidYearsArray(yearsDatesGenMemoised);
     return () => {
@@ -97,7 +100,7 @@ export default function App() {
   }, [page]);
 
   return (
-    <BodyStyle>
+    <BodyStyle ref={bodyRef}>
       <PageContext.Provider value={{ page, setPage, totalPages, pageWidth }}>
         <WorkerWindow>
           <HeadText />

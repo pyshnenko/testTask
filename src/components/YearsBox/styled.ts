@@ -7,7 +7,7 @@ import { baseMediaWidth } from "../../consts";
 
 const defaultH2Style = `
   position: relative;
-  font-size: 160px;
+  font-size: 10vw;
   margin: 0 50px;
   z-index: 1;
   top: -5px;

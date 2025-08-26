@@ -1,42 +1,16 @@
 import React, { useRef, useState, useContext, useEffect } from "react";
-import { TimelineEvent } from "./TimelineEvent";
+import { TimelineEvent } from "../TimelineEvent";
 import { Swiper, SwiperSlide, type SwiperRef } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import styled from "styled-components";
-import { SwiperLeftButton, SwiperRightButton } from "./small/Buttons";
-import { PageContext } from "../store/context";
-import { baseMediaWidth } from "../consts";
+import { SwiperLeftButton, SwiperRightButton } from "../small/Buttons";
+import { PageContext } from "../../store/context";
+import { baseMediaWidth } from "../../consts";
+import { SwiperFullBox, ButtonDiv, SwiperSection } from "./helpers/styled";
+import { slidersOnDisplay } from "./helpers/helper";
 
 interface PropsType {
   events: Array<{ year: number; description: string }>;
 }
-
-const SwiperSection = styled.section`
-  max-width: 87%;
-  max-height: 135px;
-  @media (max-width: ${baseMediaWidth}px) {
-    max-width: 100%;
-  }
-`;
-
-const SwiperFullBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  @media (max-width: ${baseMediaWidth}px) {
-    margin: 20px 0;
-  }
-`;
-
-const ButtonDiv = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 80px;
-  @media (max-width: ${baseMediaWidth}px) {
-    min-width: 0;
-  }
-`;
 
 /**
  * Компонент временной шкалы с событиями
@@ -53,12 +27,12 @@ export default function TimelineEvents(props: PropsType): React.JSX.Element {
 
   const { pageWidth } = useContext(PageContext);
 
-  const swipebleLeftButtonRef = useRef<HTMLDivElement>(null);
-  const swipebleRightButtonRef = useRef<HTMLDivElement>(null);
-  const swiperRef = useRef<SwiperRef>(null);
+  const swipebleLeftButtonRef = useRef<HTMLDivElement>(null);  // Ссылка на элемент "Назад"
+  const swipebleRightButtonRef = useRef<HTMLDivElement>(null); // Ссылка на элемент "Вперед"
+  const swiperRef = useRef<SwiperRef>(null); // Ссылка на экземпляр Swiper
 
-  const [isBeginning, setIsBeginning] = useState(true);
-  const [isEnd, setIsEnd] = useState(false);
+  const [isBeginning, setIsBeginning] = useState(true); // true - если слайдер находится в начале. Убираем кнопку "Назад"
+  const [isEnd, setIsEnd] = useState(false); // true - если слайдер находится в конце. Убираем кнопку "Вперед"
   /**
    * Обновление состояния кнопки "Далее" слайдера при изменении страницы
    * @see {@link useEffect}
@@ -67,24 +41,19 @@ export default function TimelineEvents(props: PropsType): React.JSX.Element {
     setIsEnd(events.length <= 3);
   }, [events]);
 
-  /**
+    /**
    * Обработчик изменения слайда
    * отображает или скрывает кнопки "Далее" и "Назад" в зависимости от текущего состояния слайдера
    * @see {@link Swiper}
    */
 
   const handleSlideChange = () => {
-    if (swiperRef.current && swiperRef.current.swiper) {
-      setIsBeginning(swiperRef.current.swiper.isBeginning);
-      setIsEnd(swiperRef.current.swiper.isEnd);
-    }
-  };
-
-  const slidersOnDisplay = (pageWidth: number, eventsNums: number) => {
-    if (pageWidth < baseMediaWidth) return 1;
-    else if (eventsNums < 3) return eventsNums;
-    else return 3;
-  };
+  if (swiperRef.current && swiperRef.current.swiper) {
+    const swiper = swiperRef.current.swiper; // Получаем положение слайдера
+    setIsBeginning(swiper.isBeginning);
+    setIsEnd(swiper.isEnd);
+  }
+};
 
   return (
     <SwiperFullBox>

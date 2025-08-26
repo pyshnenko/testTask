@@ -1,69 +1,33 @@
-# React + TypeScript + Vite
+# Тестовое задание
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + typeScript + webPack + Swiper + gsap
 
-Currently, two official plugins are available:
+Посмотреть онлайн можно здесь: [ссылка](https://spamigor.ru/test/only)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Это мой собственный сервер, расположен дома.
 
-## Expanding the ESLint configuration
+Верстка адаптивная, переход в десктопную или мобильную версию по размеру экрана.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Инструкция по запуску
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+##### 1. Клонируем из git:
+    git clone https://github.com/pyshnenko/testTask.git
+    cd testTask
+##### 2. Установка с использованием npm:
+    npm i
+##### 3. Запуск dev сервера:
+	npm run dev
+Сервер запустится по адресу [http://localhost:8080](http://localhost:8080)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Порт может отличаться, более подробная информация отобразится в консоли
+##### 4. Сборка и запуск сервера:
+	npm run build
+    npm start
+Сервер запустится по адресу [http://localhost:3000](http://localhost:3000)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Порт может отличаться, более подробная информация отобразится в консоли
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Дополнительная информация:
+На части слайдов присутствует текст, додуманный мной. В задании (в макете и в демо) отсутствовал текст. Я обратился за текстом и мне сообщили что брать его надо из демо-файлов. В итоге я переписал текст с видео из демо-файлов, но там в кадр попали не все слайды. 
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Имеется небольшое различие макета и демо-видео. За референс брал видео.

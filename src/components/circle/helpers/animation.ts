@@ -23,13 +23,14 @@ export function rotateOnStep(
     ];
     gsap.to(CircleRef.current, {
       duration: 1,
-      delay: 0.2,
+      delay: 0.35,
       rotate: -(360 / stepsCount) * (step - 1),
       ease: "power2.out",
     });
     points.forEach((point) => {
       gsap.to(point, {
-        duration: 0.37,
+        delay: 0.05,
+        duration: 0.5,
         rotate: (360 / stepsCount) * (step - 1),
         ease: "power2.out",
       });

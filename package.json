@@ -4,7 +4,8 @@
   "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
   "main": "eslint.config.js",
   "scripts": {
-    "start": "webpack serve --mode development",
+    "start": "serve dist",
+    "dev": "webpack serve --mode development",
     "build": "webpack --mode production",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "eslint ."
@@ -25,10 +26,12 @@
     "eslint": "^9.34.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
+    "format": "^0.2.2",
     "gsap": "^3.13.0",
     "prettier": "^3.6.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "serve": "^14.2.4",
     "styled-components": "^6.1.19",
     "swiper": "^11.2.10",
     "typescript-eslint": "^8.41.0"
