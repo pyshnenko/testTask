@@ -7,8 +7,6 @@ export const PointComponent = styled.div`
 
   .circle-container {
     position: relative;
-    width: 30vw;
-    height: 30vw;
     border-radius: 50%;
     margin: 50px auto;
     border: 1px solid rgba(66, 86, 122, 0.1); /* Круглая линия */

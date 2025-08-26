@@ -34,8 +34,8 @@ function Circle(props: CircleProps): React.JSX.Element {
       width: 0,
       height: 0
     },{
-      width: '30vw',
-      height: '30vw',
+      width: '26vw',
+      height: '26vw',
 
     })
   }, []);
