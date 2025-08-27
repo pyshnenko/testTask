@@ -27,7 +27,7 @@ export const ChildGenerator = (props: CircleProps): React.JSX.Element => {
   const StyledPRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
-    const StyledP = StyledPRef.current
+    const StyledP = StyledPRef.current;
     return () => {
       gsap.killTweensOf(StyledP);
     };

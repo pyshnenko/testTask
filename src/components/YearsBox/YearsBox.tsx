@@ -81,12 +81,14 @@ export default function YearsBox(): React.JSX.Element {
             second: stepYears.get(page)?.second || 0,
             theme: stepYears.get(page)?.theme || "",
           });
-        }
+        },
       });
     }
   }, [page]);
 
-  useEffect(() => {console.log(pageWidth)}, [pageWidth]);
+  useEffect(() => {
+    console.log(pageWidth);
+  }, [pageWidth]);
 
   return (
     <YearsBoxStyled>

@@ -13,11 +13,11 @@ const styleOnHover = `
     0% { opacity: 1; }
     100% { opacity: 0.5; }
   }
-`
+`;
 
 export const StyledSVG = styled.svg`
   ${styleOnHover}
-`
+`;
 
 export const StyledWhiteCircle = styled.div`
   background-color: white;

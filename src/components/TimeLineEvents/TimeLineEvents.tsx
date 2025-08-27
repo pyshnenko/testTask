@@ -27,7 +27,7 @@ export default function TimelineEvents(props: PropsType): React.JSX.Element {
 
   const { pageWidth } = useContext(PageContext);
 
-  const swipebleLeftButtonRef = useRef<HTMLDivElement>(null);  // Ссылка на элемент "Назад"
+  const swipebleLeftButtonRef = useRef<HTMLDivElement>(null); // Ссылка на элемент "Назад"
   const swipebleRightButtonRef = useRef<HTMLDivElement>(null); // Ссылка на элемент "Вперед"
   const swiperRef = useRef<SwiperRef>(null); // Ссылка на экземпляр Swiper
 
@@ -41,19 +41,19 @@ export default function TimelineEvents(props: PropsType): React.JSX.Element {
     setIsEnd(events.length <= 3);
   }, [events]);
 
-    /**
+  /**
    * Обработчик изменения слайда
    * отображает или скрывает кнопки "Далее" и "Назад" в зависимости от текущего состояния слайдера
    * @see {@link Swiper}
    */
 
   const handleSlideChange = () => {
-  if (swiperRef.current && swiperRef.current.swiper) {
-    const swiper = swiperRef.current.swiper; // Получаем положение слайдера
-    setIsBeginning(swiper.isBeginning);
-    setIsEnd(swiper.isEnd);
-  }
-};
+    if (swiperRef.current && swiperRef.current.swiper) {
+      const swiper = swiperRef.current.swiper; // Получаем положение слайдера
+      setIsBeginning(swiper.isBeginning);
+      setIsEnd(swiper.isEnd);
+    }
+  };
 
   return (
     <SwiperFullBox>

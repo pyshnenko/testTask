@@ -59,7 +59,8 @@ export default function App() {
    */
 
   useEffect(() => {
-    if (firstStart.current) { // если первый запуск
+    if (firstStart.current) {
+      // если первый запуск
       firstStart.current = false;
       const swipebleBlock = swipebleBlockRef.current;
       if (swipebleBlock) {
@@ -73,13 +74,13 @@ export default function App() {
         gsap.fromTo(
           bodyRef.current,
           { opacity: 0 },
-          { opacity: 1, duration: 0.5, delay: 0.5 })
+          { opacity: 1, duration: 0.5, delay: 0.5 },
+        );
       }
       setValidYearsArray(yearsDatesGenMemoised);
       return () => {
         gsap.killTweensOf(swipebleBlock);
       };
-    
     }
   }, [yearsDatesGenMemoised]);
 
@@ -111,7 +112,9 @@ export default function App() {
         <WorkerWindow>
           <HeadText />
           <YearsBox />
-          {(pageWidth < baseMediaWidth) && <ThemeTextBox theme={stepYears.get(page + 1)?.theme || ""} />}
+          {pageWidth < baseMediaWidth && (
+            <ThemeTextBox theme={stepYears.get(page + 1)?.theme || ""} />
+          )}
           <NumPageBox />
           <div ref={swipebleBlockRef} className="swiper-container">
             <TimelineEvents events={validYearsArray} />
@@ -120,4 +123,4 @@ export default function App() {
       </PageContext.Provider>
     </BodyStyle>
   );
-};
+}

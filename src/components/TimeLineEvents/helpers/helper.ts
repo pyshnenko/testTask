@@ -1,4 +1,4 @@
-  import { baseMediaWidth } from "../../../consts";
+import { baseMediaWidth } from "../../../consts";
 
 /**
  * Вычисляет количество слайдов, которые должны отображаться на экране одновременно,
@@ -16,8 +16,8 @@
  */
 
 export const slidersOnDisplay = (pageWidth: number, eventsNums: number) => {
-if (pageWidth < baseMediaWidth && eventsNums === 1) return 2;
-else if (pageWidth < baseMediaWidth) return 1.5;
-else if (eventsNums < 3.5) return eventsNums;
-else return 3.5;
+  if (pageWidth < baseMediaWidth && eventsNums === 1) return 2;
+  else if (pageWidth < baseMediaWidth) return 1.5;
+  else if (eventsNums < 3.5) return eventsNums;
+  else return 3.5;
 };

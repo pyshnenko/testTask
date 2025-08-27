@@ -49,7 +49,7 @@ export function LeftButton(props: ButtonProps) {
       height="50"
       viewBox={`0 0 50 50`}
       fill="none"
-      className={enabled?"active":"disabled"}
+      className={enabled ? "active" : "disabled"}
       opacity={enabled ? "1" : "0.5"}
     >
       <g>
@@ -80,7 +80,7 @@ export function RightButton(props: ButtonProps) {
       height="50"
       viewBox={`0 0 50 50`}
       fill="none"
-      className={enabled?"active":"disabled"}
+      className={enabled ? "active" : "disabled"}
       opacity={enabled ? "1" : "0.5"}
     >
       <g>
