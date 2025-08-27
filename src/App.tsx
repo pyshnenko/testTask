@@ -59,7 +59,7 @@ export default function App() {
    */
 
   useEffect(() => {
-    if (firstStart.current) {
+    if (firstStart.current) { // если первый запуск
       firstStart.current = false;
       const swipebleBlock = swipebleBlockRef.current;
       if (swipebleBlock) {

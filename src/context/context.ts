@@ -1,6 +1,13 @@
 import { createContext } from "react";
 import { totalPages } from "../consts";
 
+interface PageContextType {
+  page: number;
+  setPage: (page: number) => void;
+  totalPages: number;
+  pageWidth: number;
+}
+
 /**
  * Контекст приложения
  * @context PageContext
@@ -9,13 +16,6 @@ import { totalPages } from "../consts";
  * @prop {number} totalPages - общее количество страниц, берется из постоянной, описанной в `consts.ts`
  * @prop {number} pageWidth - ширина страницы
  */
-
-interface PageContextType {
-  page: number;
-  setPage: (page: number) => void;
-  totalPages: number;
-  pageWidth: number;
-}
 
 export const PageContext = createContext<PageContextType>({
   page: 1,

@@ -11,17 +11,24 @@ interface CircleProps {
 }
 
 /**
- * Функция для отрисовки круга и пупырышек
- * @param props 
- * @returns 
+ * Компонент для отрисовки анимированных круговых элементов, связанных с текущей страницей.
+ * Использует GSAP для анимации и управляет положением элементов при изменении активного шага.
+ * 
+ * @param props - Объект с параметрами компонента.
+ * @param props.theme - Тема оформления (например, цветовая схема).
+ * @returns JSX-элемент с анимированным круговым контейнером.
+ * 
+ * @example
+ * <Circle theme="dark" />
  */
 
 function Circle(props: CircleProps): React.JSX.Element {
+
   const { page, totalPages } = useContext(PageContext);
 
-  const { theme } = props;
+  const { theme } = props; // Получаем тему из пропсов для отображения
 
-  const CircleRef = useRef<HTMLDivElement>(null);
+  const CircleRef = useRef<HTMLDivElement>(null); // Ссылка на контейнер круга
 
   useCircleInitialization(CircleRef, page, totalPages);
 
