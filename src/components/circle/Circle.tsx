@@ -4,11 +4,17 @@ import { PointComponent } from "./helpers/pointStyled";
 import { rotateOnStep } from "./helpers/animation";
 import { gsap } from "gsap/gsap-core";
 import { PageContext } from "../../context/context";
-import { useCircleInitialization } from "./helpers/useCircleInit";
+import { useCircleInitialization } from "./hook/useCircleInit";
 
 interface CircleProps {
   theme: string;
 }
+
+/**
+ * Функция для отрисовки круга и пупырышек
+ * @param props 
+ * @returns 
+ */
 
 function Circle(props: CircleProps): React.JSX.Element {
   const { page, totalPages } = useContext(PageContext);
